@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHTA webkit to ACTIVATE GOLDHEN</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #d4af37; /* لون ذهبي */
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            text-transform: uppercase;
+        }
+
+        p.subtitle {
+            font-size: 1rem;
+            color: #888888;
+            margin-bottom: 40px;
+        }
+
+        /* تصميم الأزرار تتفاعل مع الـ Focus لدراع التحكم */
+        .btn-activate {
+            background: linear-gradient(135deg, #222222, #111111);
+            color: #d4af37;
+            border: 2px solid #d4af37;
+            padding: 18px 40px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+            outline: none;
+            display: inline-block;
+        }
+
+        .btn-activate:hover, .btn-activate:focus {
+            background: #d4af37;
+            color: #000000;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.8);
+            transform: scale(1.05);
+        }
+
+        /* شاشة التحميل (Buffering style) */
+        #loading-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .spinner {
+            width: 70px;
+            height: 70px;
+            border: 6px solid #222;
+            border-top: 6px solid #d4af37;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 25px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 1.3rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .progress-bar {
+            width: 300px;
+            height: 6px;
+            background: #222;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #d4af37;
+            transition: width 0.1s linear;
+        }
+
+        /* الإطار المخفي للثغرة */
+        #exploit-frame {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            border: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 200;
+            background: #000;
+        }
+
+        /* مؤشر حالة الكاش أوفلاين */
+        .cache-status {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="main-container">
+        <h1>SHTA webkit to ACTIVATE GOLDHEN</h1>
+        <p class="subtitle">Secure Environment v1.0 (12.00+)</p>
+        
+        <!-- الزر الأساسي للتفعيل -->
+        <button class="btn-activate" id="activateBtn" onclick="startProcess()">ACTIVATE GOLDHEN</button>
+    </div>
+
+    <!-- شاشة التحميل بأسلوب التقطيع والـ Buffering -->
+    <div id="loading-screen">
+        <div class="spinner"></div>
+        <div class="loading-text" id="statusText">BUFFERING...</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+    </div>
+
+    <!-- إطار تشغيل الثغرة المدمج -->
+    <iframe id="exploit-frame"></iframe>
+
+    <div class="cache-status" id="cacheStatus">Offline Cache: Checking...</div>
+
+    <script>
+        function startProcess() {
+            const loadingScreen = document.getElementById('loading-screen');
+            const progressFill = document.getElementById('progressFill');
+            const statusText = document.getElementById('statusText');
+            const exploitFrame = document.getElementById('exploit-frame');
+
+            loadingScreen.style.display = 'flex';
+            let progress = 0;
+
+            const targetUrl = "https://rawgame4.github.io/run_lapse.html";
+
+            const intervals = [
+                { at: 20, text: "INITIALIZING WEBKIT...", speed: 40 },
+                { at: 50, text: "BUFFERING PAYLOAD DATA...", speed: 80 },
+                { at: 80, text: "CONNECTING TO EXPLOIT...", speed: 50 },
+                { at: 98, text: "EXECUTING GOLDHEN...", speed: 30 }
+            ];
+
+            let currentIntervalIndex = 0;
+
+            const timer = setInterval(() => {
+                progress += Math.floor(Math.random() * 3) + 1;
+                if (progress > 100) progress = 100;
+
+                progressFill.style.width = progress + '%';
+
+                if (currentIntervalIndex < intervals.length && progress >= intervals[currentIntervalIndex].at) {
+                    statusText.innerText = intervals[currentIntervalIndex].text;
+                    currentIntervalIndex++;
+                }
+
+                if (progress === 100) {
+                    clearInterval(timer);
+                    setTimeout(() => {
+                        // تحميل الثغرة داخلياً وعرضها بدون تغيير رابط الموقع
+                        exploitFrame.src = targetUrl;
+                        exploitFrame.style.display = 'block';
+                        loadingScreen.style.display = 'none';
+                    }, 300);
+                }
+            }, 60);
+        }
+
+        // كود تفعيل الـ Service Worker للكاش الأوفلاين
+        if ('serviceWorker' in navigator) {
+            const swCode = `
+                self.addEventListener('install', e => {
+                    e.waitUntil(
+                        caches.open('ps4-offline-cache-v1').then(cache => {
+                            return cache.addAll(['./', location.href]);
+                        })
+                    );
+                });
+                self.addEventListener('fetch', e => {
+                    e.respondWith(
+                        caches.match(e.request).then(response => {
+                            return response || fetch(e.request);
+                        })
+                    );
+                });
+            `;
+            const blob = new Blob([swCode], { type: 'text/javascript' });
+            const swUrl = URL.createObjectURL(blob);
+
+            navigator.serviceWorker.register(swUrl)
+                .then(() => {
+                    document.getElementById('cacheStatus').innerText = "Offline Cache: Ready & Cached Successfully ✅";
+                })
+                .catch(() => {
+                    document.getElementById('cacheStatus').innerText = "Offline Cache: Unavailable ❌";
+                });
+        }
+    </script>
+</body>
+</html>
