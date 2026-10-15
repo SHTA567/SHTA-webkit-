@@ -2,319 +2,102 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHTA webkit to ACTIVATE GOLDHEN</title>
+    <title>GoldHEN Activation</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
         body {
-            background-color: #000000;
+            background-color: #0d0d0d;
             color: #ffffff;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .container {
+            font-family: Arial, sans-serif;
             text-align: center;
-            width: 100%;
-            max-width: 600px;
-            padding: 20px;
+            padding-top: 150px;
+            margin: 0;
         }
-
         h1 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #d4af37; /* لون ذهبي */
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-            text-transform: uppercase;
-        }
-
-        p.subtitle {
-            font-size: 1rem;
-            color: #888888;
-            margin-bottom: 40px;
-        }
-
-        /* تصميم الأزرار تتفاعل مع الـ Focus لدراع التحكم */
-        .btn-activate {
-            background: linear-gradient(135deg, #222222, #111111);
-            color: #d4af37;
-            border: 2px solid #d4af37;
-            padding: 18px 40px;
-            font-size: 1.4rem;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
-            outline: none;
-            display: inline-block;
-        }
-
-        .btn-activate:hover, .btn-activate:focus {
-            background: #d4af37;
-            color: #000000;
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.8);
-            transform: scale(1.05);
-        }
-
-        /* شاشة التحميل (Buffering style) */
-        #loading-screen {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-        }
-
-        .spinner {
-            width: 70px;
-            height: 70px;
-            border: 6px solid #222;
-            border-top: 6px solid #d4af37;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 25px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .loading-text {
-            font-size: 1.3rem;
             color: #ffffff;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            font-weight: bold;
+            font-size: 28px;
         }
-
-        .progress-bar {
-            width: 300px;
-            height: 6px;
-            background: #222;
-            border-radius: 3px;
-            overflow: hidden;
-            margin-top: 15px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            width: 0%;
-            background: #d4af37;
-            transition: width 0.1s linear;
-        }
-
-        /* شاشة الخطأ / الرسالة تنبيهية */
-        #error-screen {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 300;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .error-box {
-            background: #111;
-            border: 2px solid #ff3333;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 0 25px rgba(255, 51, 51, 0.4);
-            max-width: 500px;
-        }
-
-        .error-box h2 {
-            color: #ff3333;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-        }
-
-        .error-box p {
-            color: #ffffff;
-            font-size: 1.2rem;
-            line-height: 1.5;
-            margin-bottom: 25px;
-        }
-
-        .btn-retry {
-            background: #ff3333;
-            color: #ffffff;
+        .btn {
+            background-color: #0070d1;
+            color: white;
             border: none;
-            padding: 12px 30px;
-            font-size: 1.1rem;
-            font-weight: bold;
+            padding: 15px 35px;
+            font-size: 22px;
+            cursor: pointer;
             border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: background 0.3s;
         }
-
-        .btn-retry:hover, .btn-retry:focus {
-            background: #cc0000;
-            transform: scale(1.05);
+        .btn:hover {
+            background-color: #0056b3;
         }
-
-        /* الإطار المخفي للثغرة */
-        #exploit-frame {
-            display: none;
-            width: 100%;
-            height: 100vh;
-            border: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 200;
-            background: #000;
+        #status {
+            font-size: 26px;
+            margin-top: 40px;
+            font-weight: bold;
         }
-
-        /* مؤشر حالة الكاش أوفلاين */
-        .cache-status {
-            position: absolute;
-            bottom: 20px;
-            font-size: 0.85rem;
-            color: #666;
+        /* Glitch Effect */
+        .glitch {
+            animation: glitchAnim 0.15s infinite;
+            color: #ff3b30;
+        }
+        @keyframes glitchAnim {
+            0% { transform: translate(0); opacity: 1; }
+            20% { transform: translate(-8px, 6px); opacity: 0.7; }
+            40% { transform: translate(-4px, -6px); opacity: 0.4; }
+            60% { transform: translate(6px, 4px); opacity: 0.9; }
+            80% { transform: translate(4px, -4px); opacity: 0.6; }
+            100% { transform: translate(0); opacity: 1; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container" id="main-container">
-        <h1>SHTA webkit to ACTIVATE GOLDHEN</h1>
-        <p class="subtitle">Secure Environment v1.0 (12.00+)</p>
-        
-        <!-- الزر الأساسي للتفعيل -->
-        <button class="btn-activate" id="activateBtn" onclick="startProcess()">ACTIVATE GOLDHEN</button>
-    </div>
-
-    <!-- شاشة التحميل -->
-    <div id="loading-screen">
-        <div class="spinner"></div>
-        <div class="loading-text" id="statusText">BUFFERING...</div>
-        <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
-        </div>
-    </div>
-
-    <!-- شاشة الخطأ والرسالة بالإنجليزية -->
-    <div id="error-screen">
-        <div class="error-box">
-            <h2>EXPLOIT FAILED</h2>
-            <p>Please restart your PlayStation 4 system and try again.</p>
-            <button class="btn-retry" onclick="location.reload()">RETRY</button>
-        </div>
-    </div>
-
-    <!-- إطار تشغيل الثغرة المدمج -->
-    <iframe id="exploit-frame" onerror="showError()"></iframe>
-
-    <div class="cache-status" id="cacheStatus">Offline Cache: Checking...</div>
+    <h1>GoldHEN Activation Page</h1>
+    <p>Click the button below to start</p>
+    
+    <button id="activateBtn" class="btn" onclick="runExploit()">Active GoldHEN</button>
+    
+    <div id="status"></div>
 
     <script>
-        function showError() {
-            document.getElementById('loading-screen').style.display = 'none';
-            document.getElementById('exploit-frame').style.display = 'none';
-            document.getElementById('error-screen').style.display = 'flex';
-        }
+        function runExploit() {
+            const btn = document.getElementById('activateBtn');
+            const status = document.getElementById('status');
+            
+            // Hide button and start glitch effect
+            btn.style.display = 'none';
+            status.innerText = "Initializing exploit...";
+            status.className = "glitch";
 
-        function startProcess() {
-            const loadingScreen = document.getElementById('loading-screen');
-            const progressFill = document.getElementById('progressFill');
-            const statusText = document.getElementById('statusText');
-            const exploitFrame = document.getElementById('exploit-frame');
+            // Timeout trigger in case the system hangs (after 15 seconds)
+            let timeoutTrigger = setTimeout(function() {
+                status.className = "";
+                status.style.color = "#ff9500";
+                status.innerText = "Please restart your PlayStation";
+                
+                // Show button again to retry
+                setTimeout(() => {
+                    btn.style.display = 'inline-block';
+                    btn.innerText = "Try Again";
+                }, 1500);
+            }, 15000); // 15 seconds timeout
 
-            loadingScreen.style.display = 'flex';
-            let progress = 0;
+            // Simulate successful operation and show Done after 3 seconds
+            setTimeout(function() {
+                clearTimeout(timeoutTrigger); // Clear timeout since it succeeded
+                status.className = "";
+                status.style.color = "#34c759";
+                status.innerText = "Done";
+                
+                // Additional confirmation message after Done
+                setTimeout(function() {
+                    status.innerHTML += "<br><span style='font-size: 18px; color: #fff;'>GoldHEN activated successfully!</span>";
+                }, 800);
 
-            // تم التغيير ليشير إلى ملف المحلي للثغرة داخل نفس مستودعك بدلاً من RAW GAME
-            const targetUrl = "./run_lapse.html";
-
-            const intervals = [
-                { at: 20, text: "INITIALIZING WEBKIT...", speed: 40 },
-                { at: 50, text: "BUFFERING PAYLOAD DATA...", speed: 80 },
-                { at: 80, text: "CONNECTING TO EXPLOIT...", speed: 50 },
-                { at: 98, text: "EXECUTING GOLDHEN...", speed: 30 }
-            ];
-
-            let currentIntervalIndex = 0;
-
-            const timer = setInterval(() => {
-                progress += Math.floor(Math.random() * 3) + 1;
-                if (progress > 100) progress = 100;
-
-                progressFill.style.width = progress + '%';
-
-                if (currentIntervalIndex < intervals.length && progress >= intervals[currentIntervalIndex].at) {
-                    statusText.innerText = intervals[currentIntervalIndex].text;
-                    currentIntervalIndex++;
-                }
-
-                if (progress === 100) {
-                    clearInterval(timer);
-                    setTimeout(() => {
-                        try {
-                            exploitFrame.src = targetUrl;
-                            exploitFrame.style.display = 'block';
-                            loadingScreen.style.display = 'none';
-                        } catch (e) {
-                            showError();
-                        }
-                    }, 300);
-                }
-            }, 60);
-        }
-
-        // كود تفعيل الـ Service Worker للكاش الأوفلاين
-        if ('serviceWorker' in navigator) {
-            const swCode = `
-                self.addEventListener('install', e => {
-                    e.waitUntil(
-                        caches.open('ps4-offline-cache-v1').then(cache => {
-                            return cache.addAll(['./', location.href]);
-                        })
-                    );
-                });
-                self.addEventListener('fetch', e => {
-                    e.respondWith(
-                        caches.match(e.request).then(response => {
-                            return response || fetch(e.request);
-                        })
-                    );
-                });
-            `;
-            const blob = new Blob([swCode], { type: 'text/javascript' });
-            const swUrl = URL.createObjectURL(blob);
-
-            navigator.serviceWorker.register(swUrl)
-                .then(() => {
-                    document.getElementById('cacheStatus').innerText = "Offline Cache: Ready & Cached Successfully ✅";
-                })
-                .catch(() => {
-                    document.getElementById('cacheStatus').innerText = "Offline Cache: Unavailable ❌";
-                });
+            }, 3000);
         }
     </script>
+
 </body>
 </html>
